@@ -14,7 +14,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		// Data file path
-		String csvFile = "/home/eugeny/csv-data.csv";
+		String csvFile = "/home/eugeny/git/singles-match-2/csv-data.csv";
 		
 		// List of all singles, extracted from data file
 		List<Single> singles = new ArrayList<Single>(); 
