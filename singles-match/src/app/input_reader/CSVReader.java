@@ -12,19 +12,19 @@ import app.entity.Single;
 
 public class CSVReader {
 	public static final String delimiter = ",";
-	  public static void read(String csvFile, List<Single> datesList) {
+	  public static void read(String csvFile, List<Single> singles) {
 	    try {
 	      File file = new File(csvFile);
 	      FileReader fr = new FileReader(file);
 	      BufferedReader br = new BufferedReader(fr);
 	      String line = " ";
 	      String[] tempArr;
+	      Single tempEntry;
 	      
-	      // as long as there are lines in file ...
 	      while ((line = br.readLine()) != null) {
 	        tempArr = line.split(delimiter);
 	        if(tempArr[1].equalsIgnoreCase("male")) {
-	    	   Male entry = new Male(tempArr[0],
+	    	   tempEntry = new Male(tempArr[0],
 	    			   					 tempArr[1],
 	    			   					 Short.parseShort(tempArr[2]),
 	    			   					 tempArr[3],
@@ -34,10 +34,9 @@ public class CSVReader {
 	    			   					 tempArr[7],
 	    			   					 tempArr[8],
 	    			   					 Short.parseShort(tempArr[9]));
-	    	   datesList.add(entry);
 	        }
 	        else {
-	    	   Female entry = new Female(tempArr[0],
+	    	   tempEntry = new Female(tempArr[0],
 	   					 					 tempArr[1],
 	   					 					 Short.parseShort(tempArr[2]),
 	   					 					 tempArr[3],
@@ -47,8 +46,8 @@ public class CSVReader {
 	   					 					 tempArr[7],
 	   					 					 tempArr[8],
 	   					 					 tempArr[9]);
-	    	   datesList.add(entry);
 	       }
+	       singles.add(tempEntry);
 	      }
 	      br.close();
 	    }
